@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
 const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 async function setupNodeEvents(on, config) {
   // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
@@ -12,7 +13,8 @@ return config;
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      allureWriter(on, config);
+      return config;
     },
     setupNodeEvents,
     baseUrl:'http://192.168.1.201:8008/',
@@ -20,6 +22,8 @@ module.exports = defineConfig({
     watchForFileChanges:true,
     chromeWebSecurity: false,
     experimentalModifyObstructiveThirdPartyCode: true,
-    defaultCommandTimeout: 10000
+    defaultCommandTimeout: 10000,
+    experimentalRunAllSpecs: true,
+    experimentalStudio: true,
   },
 });
