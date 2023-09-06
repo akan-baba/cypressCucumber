@@ -7,10 +7,12 @@ const email = faker.internet.email();
 const firstname = faker.name.firstName();
 const lastname = faker.name.lastName();
 
-Given("I am a new customer", () => {
+Given("User is on the registration page", () => {
     cy.visit('/')
     registration.pageMethods.registerLink().click()
 })
+
+
 
 When("I complete the registration process", () => {
     registration.pageMethods.registerLink().click()

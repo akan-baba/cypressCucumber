@@ -67,7 +67,18 @@ export class UserRegisterPage {
         successMessage: () => cy.get(this.webLocators.successMessage).should('be.visible', 'Your registration completed'),
         errorMessage: () => cy.get(this.webLocators.errorMessage).should('be.visible', 'The specified email already exists'),
 
+        //..............login methods....................................
 
+        loginLink: () => cy.get(this.webLocators.loginLink),
+        loginUsername: () => cy.get(this.webLocators.loginUsername),
+        loginPwd:() => cy.get(this.webLocators.loginPwd),
+        loginBtn: () => cy.get(this.webLocators.loginBtn),
+        pwdRecovery: () => cy.get(this.pageMethods.pwdRecovery),
+        recoveryEmail: () => cy.get(this.webLocators.recoveryEmail),
+        recoveryBtn: () => cy.get(this.webLocators.recoveryBtn),
+        logOutBtn: ()  => cy.get(this.webLocators.logOutBtn),
+        loginErrorMessage: () => cy.get(this.webLocators.loginErrorMessage).should('be.visible', 'The credentials provided are incorrect'),
+        pwdRecoveryMessage: () => cy.get(this.webLocators.pwdRecoveryMessage).should('be.visible', 'Email with instructions has been sent to you.')
 
 
 
